@@ -1,0 +1,53 @@
+
+
+//User function Template for Java
+
+class Solution {
+    static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
+        // code here
+        int count=0;
+        boolean visited[]=new boolean[V];
+        ArrayList<ArrayList<Integer>>list=new ArrayList<>();
+        for(int i=0;i<V;i++)
+         list.add(new ArrayList<>());
+         
+        for(int i=0;i<V;i++){
+            for(int j=0;j<V;j++){
+                if(adj.get(i).get(j)==1 && i!=j){
+                    list.get(i).add(j);
+                    list.get(j).add(i);
+                }
+            }
+        }
+        
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                bfs(i,visited,list);
+                count++;
+            }
+            
+        }
+        return count;
+        
+    }
+    static void bfs(int Node,boolean visited[],ArrayList<ArrayList<Integer>>adj){
+        visited[Node]=true;
+        Queue<Integer>queue=new LinkedList<>();
+        queue.add(Node);
+        
+        while(!queue.isEmpty()){
+            Integer currNode=queue.poll();
+            
+            for(Integer i:adj.get(currNode)){
+                if(!visited[i]){
+                     visited[i]=true;
+                      queue.add(i);
+                }
+               
+            }
+        }
+    }
+};
+
+
+ 
