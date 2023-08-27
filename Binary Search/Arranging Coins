@@ -1,0 +1,23 @@
+class Solution {
+
+    public int arrangeCoins(int n) {
+        long low=0;
+        long high=n;
+        long ans=1;
+        while(low<=high){
+            long mid=low+(high-low)/2;
+            if(mid*(mid+1)/2<=n){
+                ans=mid;
+                low=mid+1;
+            }
+           else
+            high=mid-1;
+        }
+        return (int)ans;
+        
+    }
+}
+
+// k=k(k+1)/2
+//rows:           1 2 3 4  5
+//element require 1 3 6 10 15
