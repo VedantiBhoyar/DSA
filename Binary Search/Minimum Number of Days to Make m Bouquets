@@ -1,0 +1,45 @@
+class Solution {
+public boolean isPossible(int []bloomDay,int day,int m,int k,int n){
+        int count=0;
+        int pair=0;
+        for(int i=0;i<n;i++){
+            if(bloomDay[i]<=day)
+                 count++; 
+            else{
+                pair+=count/k;
+                count=0;
+            }  
+        }
+        pair+=count/k;
+     return (pair>=m);
+    }
+    public int minDays(int[] bloomDay, int m, int k) {
+        int max=bloomDay[0];
+        int min=bloomDay[0];
+        int n=bloomDay.length;
+        int res=-1;
+
+        if(m*k>n)
+         return -1;
+
+        for(int i=1;i<n;i++){
+            if(bloomDay[i]>max)
+             max=bloomDay[i];
+            if(bloomDay[i]<min)
+             min=bloomDay[i];
+        }
+        int low=min;
+        int high=max;
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(isPossible(bloomDay,mid,m,k,n)){
+                res=mid;
+                high=mid-1;
+            }
+            else
+             low=mid+1;
+        }
+    return res;
+     
+    }
+}
