@@ -1,5 +1,6 @@
 <p align="center">
-  <img src="repository_banner.png" alt="Data Structures and Algorithms Practice" width="600">
+  <img src="![image](https://github.com/VedantiBhoyar/DSA/assets/71519458/d2233980-89f1-41f5-8c35-152e4f0beced)
+" alt="Data Structures and Algorithms Practice" width="600">
 </p>
 
 <h1 align="center">Data Structures and Algorithms Practice Repository</h1>
