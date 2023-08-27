@@ -1,0 +1,34 @@
+class Solution {
+    public int isSubMax(int nums[],int mid,int n){
+        int count=1;
+        int total=0;
+        for(int i=0;i<n;i++){
+            if(nums[i]+total<=mid)
+             total+=nums[i];
+            else{
+                count++;
+                total=nums[i];
+            }
+        }
+        return count;
+    }
+    public int splitArray(int[] nums, int k) {
+        int n=nums.length;
+        int max=nums[0];
+        int sum=0;
+        for(int i=0;i<n;i++){
+            sum+=nums[i];
+            max=Math.max(max,nums[i]);
+        }
+        int low=max;
+        int high=sum;
+        while(low<=high){
+            int mid=low+(high-low)/2;
+            if(isSubMax(nums,mid,n)<=k)
+             high=mid-1;
+            else
+             low=mid+1;
+        }
+        return low;
+    }
+}
