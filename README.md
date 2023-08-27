@@ -9,6 +9,9 @@
 <p align="center">
   <a href="https://github.com/VedantiBhoyar/DSA/stargazers"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/VedantiBhoyar/DSA.svg"></a>
   <a href="https://github.com/VedantiBhoyar/DSA/network/members"><img alt="GitHub Forks" src="https://img.shields.io/github/forks/VedantiBhoyar/DSA.svg"></a>
+ <a href="https://leetcode.com/vedantibhoyar/"><img alt="LeetCode Badge" src="https://img.shields.io/badge/LeetCode-Profile-blue"></a>
+<a href="https://auth.geeksforgeeks.org/user/vedantibhoyar/practice"><img alt="GeeksforGeeks Badge" src="https://img.shields.io/badge/GeeksforGeeks-Profile-green"></a>
+
 
 </p>
 
