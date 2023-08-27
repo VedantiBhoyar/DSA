@@ -1,0 +1,41 @@
+class Solution {
+    public int numIslands(char[][] grid) {
+        int n=grid.length;
+        int m=grid[0].length;
+        int count=0;
+        
+        int visited[][]=new int [n][m];
+        int deltaRow[]={-1,0,1,0};
+        int deltaCol[]={0,1,0,-1};
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(grid[i][j]=='1' && visited[i][j]==0){
+                    dfs(i,j,grid,visited,deltaRow,deltaCol);
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+    void dfs(int row,int col,char grid[][],int visited[][],int[]deltaRow
+    ,int[]deltaCol){
+        
+        int n=grid.length;
+        int m=grid[0].length;
+
+        visited[row][col]=1;
+
+        for(int i=0;i<4;i++){
+         
+         int nrow=row+deltaRow[i];
+         int ncol=col+deltaCol[i];
+
+         if (nrow>=0 && ncol< m && ncol>=0 && nrow < n &&  grid[nrow][ncol] == '1'  
+             && visited[nrow][ncol]==0){
+              
+              visited[nrow][ncol]=1;
+              dfs(nrow,ncol,grid,visited,deltaRow,deltaCol);
+        } 
+    }
+  }
+}
