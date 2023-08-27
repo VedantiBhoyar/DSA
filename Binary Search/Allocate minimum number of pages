@@ -1,0 +1,45 @@
+
+//User function Template for Java
+
+class Solution 
+{
+    public int numberOfStudents(int arr[],int n,int pages){
+        int countOfStudent=1;
+        int numberOfPages=0;
+        for(int i=0;i<n;i++){
+            if(numberOfPages+arr[i]<=pages){
+                numberOfPages+=arr[i];
+            }else{
+                countOfStudent++;
+                numberOfPages=arr[i];
+            }
+        }
+        return countOfStudent;
+    }
+    //Function to find minimum number of pages.
+    public int findPages(int[]A,int N,int M)
+    {
+        
+        if(N<M)
+         return -1;
+         
+       int max=A[0];
+       int sum=0;
+       for(int i=0;i<N;i++){
+           sum+=A[i];
+           max=Math.max(max,A[i]);
+       }
+       int low=max;
+       int high=sum;
+       while(low<=high){
+           int mid=low+(high-low)/2;
+           if(numberOfStudents(A,N,mid)>M)
+               low=mid+1;
+               
+           else
+            high=mid-1;
+           
+       }
+       return low;
+    }
+};
