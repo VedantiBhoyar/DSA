@@ -1,53 +1,58 @@
 
-
-//User function Template for Java
-
+class Pair{
+    int first;
+    int second;
+    Pair(int first,int second){
+        this.first=first;
+        this.second=second;
+    }
+}
 class Solution {
-    static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
-        // code here
+    // Function to find the number of islands.
+    public int numIslands(char[][] grid) {
+        // Code here
+        int n=grid.length;
+        int m=grid[0].length;
         int count=0;
-        boolean visited[]=new boolean[V];
-        ArrayList<ArrayList<Integer>>list=new ArrayList<>();
-        for(int i=0;i<V;i++)
-         list.add(new ArrayList<>());
-         
-        for(int i=0;i<V;i++){
-            for(int j=0;j<V;j++){
-                if(adj.get(i).get(j)==1 && i!=j){
-                    list.get(i).add(j);
-                    list.get(j).add(i);
+
+        int visited[][]=new int[n][m];
+        for(int row=0;row<n;row++){
+            for(int col=0;col<m;col++){
+                if(grid[row][col]=='1' && visited[row][col]==0){
+                    count++;
+                    bfs(row,col,visited,grid);
                 }
             }
-        }
-        
-        for(int i=0;i<V;i++){
-            if(!visited[i]){
-                bfs(i,visited,list);
-                count++;
-            }
-            
         }
         return count;
-        
     }
-    static void bfs(int Node,boolean visited[],ArrayList<ArrayList<Integer>>adj){
-        visited[Node]=true;
-        Queue<Integer>queue=new LinkedList<>();
-        queue.add(Node);
+     void bfs(int r,int c,int[][]visited,char grid[][]){
+
+        visited[r][c]=1;
+        Queue<Pair>queue=new LinkedList<>();
+        queue.add(new Pair(r,c));
+
+        int n=grid.length;
+        int m=grid[0].length;
         
         while(!queue.isEmpty()){
-            Integer currNode=queue.poll();
-            
-            for(Integer i:adj.get(currNode)){
-                if(!visited[i]){
-                     visited[i]=true;
-                      queue.add(i);
+            int row=queue.peek().first;
+            int col=queue.peek().second;
+            queue.remove();
+
+            for(int deltaRow=-1;deltaRow<=1;deltaRow++){
+                 for(int deltaCol=-1;deltaCol<=1;deltaCol++){
+                     int nrow=deltaRow+row;
+                     int ncol=deltaCol+col;
+
+                     if(nrow>=0 && ncol>=0 && nrow<n && ncol<m && 
+                     visited[nrow][ncol]==0 && grid[nrow][ncol]=='1'){
+                         visited[nrow][ncol]=1;
+                         queue.add(new Pair(nrow,ncol));
+                     }
                 }
-               
             }
         }
-    }
-};
-
-
- 
+       
+   }
+}
