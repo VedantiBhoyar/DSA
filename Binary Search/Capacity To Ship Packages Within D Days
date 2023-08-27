@@ -1,0 +1,40 @@
+class Solution {
+    public int capacity(int[]weights,int mid,int n){
+        int load=0;
+        int days=1;
+        for(int i=0;i<n;i++){
+            if(weights[i]+load>mid){
+                days+=1;
+                load=weights[i];
+            }
+            else{
+                load+=weights[i];
+            }
+        }
+        return days;
+    }
+    public int shipWithinDays(int[] weights, int days) {
+        int n=weights.length;
+        int sum=0;
+        int max=0;
+        for(int i=0;i<n;i++){
+            if(weights[i]>max)
+               max=weights[i];
+            sum+=weights[i];
+        }
+        int low=max;
+        int high=sum;
+        int res=-1;
+        while(low<=high){
+            int mid=(low+high)/2;
+            if(capacity(weights,mid,n)<=days){
+                res=mid;
+                high=mid-1;
+            }
+            else
+             low=mid+1;
+        }
+        return res;
+    }
+}
+
