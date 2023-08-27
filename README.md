@@ -47,12 +47,6 @@ This repository serves as a comprehensive collection of meticulously crafted sol
 
 If you find this repository valuable, consider giving it a ⭐️ to show your appreciation. It means a lot!
 
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
 Let's connect! Find me on [LinkedIn](https://www.linkedin.com/in/vedanti-bhoyar/).
 
 _Keep coding and embracing the art of algorithms!_ 🌟
