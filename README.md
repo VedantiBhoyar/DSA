@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://github.com/VedantiBhoyar/DSA/stargazers"><img alt="GitHub Stars" src="https://img.shields.io/github/stars/VedantiBhoyar/DSA.svg"></a>
   <a href="https://github.com/VedantiBhoyar/DSA/network/members"><img alt="GitHub Forks" src="https://img.shields.io/github/forks/VedantiBhoyar/DSA.svg"></a>
-  <a href="https://github.com/VedantiBhoyar/DSA/blob/main/LICENSE"><img alt="GitHub License" src="https://img.shields.io/github/license/VedantiBhoyar/DSA.svg"></a>
+
 </p>
 
 <div align="center">
