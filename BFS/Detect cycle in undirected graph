@@ -1,0 +1,46 @@
+
+class Pair{
+    int first;
+    int second;
+    Pair(int first,int second){
+        this.first=first;
+        this.second=second;
+    }
+}
+class Solution {
+    // Function to detect cycle in an undirected graph.
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        // Code here
+        boolean visited[]=new boolean[V];
+        for(int i=0;i<V;i++){
+            if(!visited[i]){
+                if(checkForCycle(i,adj,visited))
+                 return true;
+            }
+        }
+        return false;
+    }
+    
+    boolean checkForCycle(int src,ArrayList<ArrayList<Integer>>adj,boolean visited[]){
+         visited[src]=true;
+         Queue<Pair>queue=new LinkedList<>();
+         queue.add(new Pair(src,-1));
+         
+         while(!queue.isEmpty()){
+             int node=queue.peek().first;
+             int parent=queue.peek().second;
+             queue.remove();
+             
+             for(int adjacent:adj.get(node)){
+                 if(!visited[adjacent]){
+                     visited[adjacent]=true;
+                     queue.add(new Pair(adjacent,node));
+                 }
+                 else if(parent!=adjacent)
+                  return true;
+             }
+             
+         }
+         return false;
+    }
+}
