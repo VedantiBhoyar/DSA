@@ -1,0 +1,46 @@
+class Pair{
+    int first;
+    int second;
+    Pair(int first,int second){
+        this.first=first;
+        this.second=second;
+    }
+}
+class Solution {
+    public int[][] floodFill(int[][] image, int sr, int sc, int color) {
+       int  initial_color=image[sr][sc];
+        int res[][]=image;
+        int deltaRow[]={-1,0,1,0};
+        int deltaCol[]={0,1,0,-1};
+        bfs(sr,sc,image,res,initial_color,color,deltaRow,deltaCol); 
+        return res;
+    }
+    void bfs(int r,int c,int[][]image,int[][]res,int initial_color,int color 
+    ,int[]deltaRow,int[]deltaCol){
+        
+        Queue<Pair>queue=new LinkedList<>();
+        queue.add(new Pair(r,c));
+        res[r][c]=color;
+
+        int n=image.length;
+        int m=image[0].length;
+
+        while(!queue.isEmpty()){
+            int row=queue.peek().first;
+            int col=queue.peek().second;
+            queue.remove();
+
+            for(int i=0;i<4;i++){
+                int nrow=row+deltaRow[i];
+                int ncol=col+deltaCol[i];
+
+                if(nrow>=0 && ncol>=0 && nrow<n && ncol<m && 
+                image[nrow][ncol]==initial_color && res[nrow][ncol]!=color){
+                    res[nrow][ncol]=color;
+                    queue.add(new Pair(nrow,ncol));
+                }
+            }
+        }
+       
+    }
+}
