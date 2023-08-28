@@ -1,0 +1,23 @@
+class Solution {
+    public int divisorSubstrings(int num, int k) {
+        String str=String.valueOf(num);
+        int n=str.length();
+        int count=0;  
+        int i=0;
+        int j=0;
+        while(j<n){
+            if(j-i+1<k)
+             j++;
+            else{
+             String temp=str.substring(i,j+1);
+             if(Integer.parseInt(temp)!=0 &&
+                num%Integer.parseInt(temp)==0)
+              count++;
+            j++;
+            i++;
+            }
+        }
+        return count;
+        
+    }
+}
