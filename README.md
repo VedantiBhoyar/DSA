@@ -11,7 +11,7 @@
   <a href="https://github.com/VedantiBhoyar/DSA/network/members"><img alt="GitHub Forks" src="https://img.shields.io/github/forks/VedantiBhoyar/DSA.svg"></a>
  <a href="https://leetcode.com/vedantibhoyar/"><img alt="LeetCode Badge" src="https://img.shields.io/badge/LeetCode-Profile-blue"></a>
 <a href="https://auth.geeksforgeeks.org/user/vedantibhoyar/practice"><img alt="GeeksforGeeks Badge" src="https://img.shields.io/badge/GeeksforGeeks-Profile-green"></a>
-![Profile Views](https://komarev.com/ghpvc/?username=vedantibhoyar)
+![Profile Views](https://komarev.com/ghpvc/?username=VedantiBhoyar)
 
 
 </p>
