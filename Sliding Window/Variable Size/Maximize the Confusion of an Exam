@@ -1,0 +1,30 @@
+class Solution {
+    public int maxConsecutiveAnswers(String answerKey, int k) {
+        int i=0,j=0,countT=0,countF=0,n=answerKey.length(),res=0;
+        while(j<n){
+          char ch=answerKey.charAt(j);
+          if(ch=='T')
+           countT++;
+          else
+           countF++;
+          if(Math.min(countT,countF)<=k)
+            res=Math.max(res,countT+countF);
+          else{
+              while(Math.min(countT,countF)>k && i<j){
+                  char curr=answerKey.charAt(i);
+                  if(curr=='T')
+                    countT--;
+                  else
+                    countF--;
+                  if(Math.min(countT,countF)<=k)
+                    res=Math.max(res,countT+countF);
+                  i++;
+              }
+          }
+          j++;  
+        }
+        return res;
+    }
+}
+
+
