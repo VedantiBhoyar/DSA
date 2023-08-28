@@ -1,0 +1,26 @@
+class Solution {
+    public int[] decrypt(int[] code, int k) {
+        int n=code.length;
+        int res[]=new int[n];
+        if(k==0)
+         return res;
+        else{
+            int i=0,j=0,sum=0;
+            while(i<n){
+                sum+=code[(j+n)%n];
+                if((j-i+1+n)%n<Math.abs(k))
+                    j++; 
+                else{
+                    if(k>0)
+                      res[(i-1+n)%n]=sum;
+                    else
+                      res[(j+1+n)%n]=sum;
+                    sum-=code[(i+n)%n];
+                    i++;
+                    j++;   
+                }
+            }
+        }
+        return res;
+    }
+}
