@@ -1,0 +1,41 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverse(ListNode head){
+        ListNode curr=head,prev=null,next=null;
+        while(curr!=null){
+            next=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=next;
+        }
+        return prev;
+
+    }
+    public boolean isPalindrome(ListNode head) {
+        ListNode slow=head,fast=head;
+        // to calcualte mid....in order to calculate first mid in case of even 
+        while(fast.next!=null && fast.next.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+        }
+        // we want to reverse the list after middle element
+        ListNode rev=reverse(slow.next);
+        ListNode curr=head;
+        while(rev!=null && curr!=null){
+            if(rev.val!=curr.val)
+              return false;
+            curr=curr.next;
+            rev=rev.next;
+        }
+        return true;
+    }
+}
