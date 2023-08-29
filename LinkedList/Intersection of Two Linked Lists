@@ -1,0 +1,59 @@
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+    // Set<ListNode>set=new HashSet<>();
+    // ListNode curr=headA;
+    // while(curr!=null){
+    //     set.add(curr);
+    //     curr=curr.next;
+    // }
+    // curr=headB;
+    // while(curr!=null){
+    //     if(set.contains(curr))
+    //      return curr;
+    //     curr=curr.next;
+    // }
+    // return null;
+
+    ListNode currA=headA,currB=headB;
+    int lenA=size(headA),lenB=size(headB);
+    int k=Math.abs(lenA-lenB);
+    if(lenA>lenB)
+     currA=moveKAhead(currA,k);
+    else
+      currB=moveKAhead(currB,k);
+     while(currA!=null && currB!=null){
+         if(currA==currB)
+          return currA;
+         currA=currA.next;
+         currB=currB.next;
+     }
+     return null;
+   
+    }
+    public ListNode moveKAhead(ListNode curr,int k){
+         for(int i=0;i<k;i++)
+           curr=curr.next;
+        return curr;
+    }
+    // To calculate length
+    public int size(ListNode head){
+        int len=0;
+        ListNode curr=head;
+        while(curr!=null){
+            len++;
+            curr=curr.next;
+        }
+        return len;
+    }
+}
