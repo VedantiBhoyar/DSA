@@ -1,0 +1,23 @@
+class Solution {
+    public List<List<Integer>> combinationSum2(int[] candidates, int target) {
+        Arrays.sort(candidates);
+        List<List<Integer>>res=new ArrayList<>();
+        generateSum(0,candidates.length,candidates,new ArrayList<>(),res,target);
+        return res;
+    }
+    void generateSum(int start,int n,int[]arr,List<Integer>list
+                    ,List<List<Integer>>res,int target){
+        
+        if(target==0)
+          res.add(new ArrayList<>(list));
+        if(target<0)
+          return;
+        for(int i=start;i<n;i++){
+            if(i>start && arr[i]==arr[i-1])
+              continue;
+            list.add(arr[i]);
+            generateSum(i+1,n,arr,list,res,target-arr[i]);
+            list.remove(list.size()-1);
+        }
+    }
+}
