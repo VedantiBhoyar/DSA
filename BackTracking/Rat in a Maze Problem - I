@@ -1,0 +1,33 @@
+
+
+// User function Template for Java
+
+// m is the given matrix and n is the order of matrix
+class Solution {
+    public static ArrayList<String> findPath(int[][] m, int n) {
+        // Your code here
+        ArrayList<String>list=new ArrayList<>();
+        int r=m.length;
+        int c=m[0].length;
+        boolean visited[][]=new boolean[r][c];
+        helper(0,0,m,visited,"",list);
+        return list;
+    }
+    static void helper(int row,int col,int[][]arr,boolean visited[][],String str,List<String>list){
+        int n=arr.length;
+        int m=arr[0].length;
+        if(row==n-1 && col==m-1 && arr[n-1][m-1]==1){
+            list.add(str);
+            return;
+        }
+        if(row<0 || col<0 || row>=n || col>=m || visited[row][col] || arr[row][col]==0)
+         return;
+        visited[row][col]=true;
+        helper(row-1,col,arr,visited,str+"U",list);
+        helper(row+1,col,arr,visited,str+"D",list);
+        helper(row,col+1,arr,visited,str+"R",list);
+        helper(row,col-1,arr,visited,str+"L",list);
+        visited[row][col]=false;
+        
+    }
+}
