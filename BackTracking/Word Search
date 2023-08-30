@@ -1,0 +1,41 @@
+class Solution {
+    char[]letter;
+    char[][]matrix;
+    boolean visited[][];
+    public boolean exist(char[][] board, String word) {
+        int n=board.length;
+        int m=board[0].length;
+        letter=word.toCharArray();
+        matrix=board;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(letter[0]==matrix[i][j]){
+                    visited=new boolean[n][m];
+                    if(searchWord(0,i,j,visited))
+                     return true;
+                }
+            }
+        }
+        return false;
+    }
+    boolean searchWord(int index,int row,int col,boolean visited[][]){
+        int n=matrix.length,m=matrix[0].length;
+        if(index>=letter.length)
+           return true;
+        if(col<0 || row<0 || col>=m || row>=n || visited[row][col] || 
+        letter[index]!=matrix[row][col])
+           return false;
+       
+
+        visited[row][col]=true;
+        boolean top= searchWord(index+1,row-1,col,visited);
+        boolean bottom=searchWord(index+1,row+1,col,visited);
+        boolean right= searchWord(index+1,row,col+1,visited);
+        boolean left= searchWord(index+1,row,col-1,visited);
+        visited[row][col]=false;
+
+        if(top || bottom || right || left)
+         return true;
+        return false;
+    }
+}
