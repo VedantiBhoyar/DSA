@@ -1,0 +1,62 @@
+class Solution {
+    List<List<String>>res=new ArrayList<>();
+    public List<List<String>> solveNQueens(int n) {
+        char board[][]=new char[n][n];
+        for(char row[]:board)
+          Arrays.fill(row,'.');
+        generateBoard(0,0,0,board,n);
+        return res;
+    }
+    void generateBoard(int index,int row,int col,char[][]board,int n){
+        if(col==board[0].length){
+            row++;
+            col=0;
+        }
+        if(n==0){
+            res.add(convertedToList(board));
+            return;
+        }
+        if(row==board.length)
+          return;
+        if(isValid(row,col,board)){
+            board[row][col]='Q';
+            n--;
+            generateBoard(index+1,row+1,0,board,n);
+            board[row][col]='.';
+            n++;
+        }
+        generateBoard(index+1,row,col+1,board,n);
+    }
+    boolean isValid(int row,int col,char board[][]){
+        int N=board.length;
+        for(int i=0;i<N;i++){
+            if(board[i][col]=='Q' || board[row][i]=='Q')
+             return false;
+        }
+        int i=row,j=col;
+        while(i>=0 && j>=0){
+            if(board[i][j]=='Q')
+             return false;
+            i--;
+            j--;
+        }
+        i=row;j=col;
+        while(i>=0 && j<N){
+            if(board[i][j]=='Q')
+             return false;
+            i--;
+            j++;
+        }
+        return true;
+    }
+    List<String>convertedToList(char[][]board){
+        List<String>list=new ArrayList<>();
+        for(char row[]:board){
+            StringBuilder sb=new StringBuilder();
+            for(char ch:row)
+             sb.append(ch);
+             list.add(sb.toString());
+        }
+        return list;
+    }
+}
