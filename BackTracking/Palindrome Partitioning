@@ -1,0 +1,30 @@
+class Solution {
+    List<List<String>>res=new ArrayList<>();
+    public List<List<String>> partition(String s) {
+        List<String>list=new ArrayList<>();
+        generatePalindrome(0,list,s);
+        return res;
+        
+    }
+    void  generatePalindrome(int index,List<String>curr,String s){
+        if(index==s.length()){
+            res.add(new ArrayList<>(curr));
+            return ;
+        }
+        for(int i=index;i<s.length();i++){
+            if(isPalindrome(s,index,i)){
+                curr.add(s.substring(index,i+1));
+                generatePalindrome(i+1,curr,s);
+                curr.remove(curr.size()-1);
+            }
+        }
+    }
+    boolean isPalindrome(String s,int start,int end){
+        while(start<=end){
+            if(s.charAt(start++)!=s.charAt(end--))
+              return false;
+        }
+        return true; 
+    }
+}
+
