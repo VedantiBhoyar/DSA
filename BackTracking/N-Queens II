@@ -1,0 +1,56 @@
+class Solution {
+    char board[][];
+    int count=0;
+    public int totalNQueens(int n) {
+        board=new char[n][n];
+        for(char arr[]:board)
+         Arrays.fill(arr,'.');
+         helper(0,0,n);
+         return count;
+    }
+    void helper(int row,int col,int n){
+        if(col==board[0].length){
+            row++;
+            col=0;
+        }
+        if(row==board.length)
+         return;
+        if(n==0){
+            count++;
+            return;
+        }
+        if(isValid(row,col,board)){
+            board[row][col]='Q';
+            n--;
+            helper(row,0,n);
+            board[row][col]='.';
+            n++;
+        }
+        helper(row,col+1,n);
+    }
+    boolean isValid(int row,int col,char[][]board){
+        int N=board.length;
+        for(int i=0;i<N;i++){
+            if(board[i][col]=='Q' || board[row][i]=='Q')
+              return false;
+        }
+        // Top Left
+        int i=row,j=col;
+        while(i>=0 && j>=0){
+            if(board[i][j]=='Q')
+             return false;
+            i--;
+            j--;
+        }
+      // Top Right
+        i=row;j=col;
+        while(i>=0 && j<N){
+            if(board[i][j]=='Q')
+             return false;
+            i--;
+            j++;
+        }
+        return true;
+    }
+   
+}
