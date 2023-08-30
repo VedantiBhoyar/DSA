@@ -1,0 +1,33 @@
+class Solution {
+    public List<List<Integer>> permuteUnique(int[] nums) {
+        int k=nums.length;
+        List<List<Integer>>res=new ArrayList<>();
+        if(k==0)
+          return res;
+        Arrays.sort(nums);
+        boolean visited[]=new boolean[k];
+        generatePermutation(visited,nums,new ArrayList<>(),res,k);
+        return res;
+        
+    }
+    void generatePermutation(boolean visited[],int nums[],List<Integer>list,   List<List<Integer>>res,int k){
+        
+        if(list.size()==k){
+            res.add(new ArrayList<>(list));
+            return;
+        }
+        for(int i=0;i<k;i++){
+            if(visited[i])
+             continue;
+            if(i>0 && nums[i]==nums[i-1] && !visited[i-1])
+             continue;
+            list.add(nums[i]);
+            visited[i]=true;
+            generatePermutation(visited,nums,list,res,k);
+            visited[i]=false;
+            list.remove(list.size()-1); 
+        }
+    }
+}
+
+
