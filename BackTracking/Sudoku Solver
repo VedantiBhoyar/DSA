@@ -1,0 +1,60 @@
+class Solution {
+    private char[][]board;
+    public void solveSudoku(char[][] board) {
+        this.board=board;
+        helper(0,0);
+    }
+    boolean helper(int row,int col){
+        if(col==9){
+            row++;
+            col=0;
+        }
+        if(row==9)
+         return true;
+
+        if(board[row][col]!='.')
+          return helper(row,col+1);
+
+        for(char i='1';i<='9';i++){
+            if(!isValid(i,row,col))
+              continue;
+            board[row][col]=i;
+            if(helper(row,col+1)==true)
+             return true;
+            board[row][col]='.';
+        }
+        return false;
+    }
+    boolean isValid(char curr,int row,int col){
+        for(int i=0;i<9;i++){
+            if(board[i][col]==curr || board[row][i]==curr)
+             return false;
+        }
+        int rowBorder[]=findBorder(row);
+        int colBorder[]=findBorder(col);
+
+        for(int i=rowBorder[0];i<=rowBorder[1];i++){
+            for(int j=colBorder[0];j<=colBorder[1];j++){
+                if(board[i][j]==curr)
+                 return false;
+            }
+        }
+        return true;
+    }
+    private int[] findBorder(int position){
+        int []res=new int[2];
+        if(position<3){
+            res[0]=0;
+            res[1]=2;
+        }
+        else if(position<6){
+            res[0]=3;
+            res[1]=5;
+        }
+        else{
+            res[0]=6;
+            res[1]=8;
+        }
+        return res;
+    }
+}
