@@ -1,0 +1,45 @@
+class Solution {
+    public List<List<Integer>> subsets(int[] nums) {
+        // Approach-I  Iterative
+        // List<List<Integer>>res=new ArrayList<>();
+        // res.add(new ArrayList<>());
+       
+        // for(int k:nums){
+        //      int n=res.size();
+        //     for(int i=0;i<n;i++){
+        //         List<Integer>list=new ArrayList<>(res.get(i));
+        //         list.add(k);
+        //         res.add(list);
+        //     } 
+        // }
+        // return res;
+
+        
+    // Approach 2-BackTracking
+    List<List<Integer>>res=new ArrayList<>();
+    generateSubSet(0,nums,new ArrayList<>(),res);
+    return res;
+    }
+    void generateSubSet(int start,int nums[],List<Integer>list,
+                       List<List<Integer>>res){
+        res.add(new ArrayList<>(list));
+        int n=nums.length;
+        for(int i=start;i<n;i++){
+            list.add(nums[i]); //1 2 3
+            generateSubSet(i+1,nums,list,res);
+            list.remove(list.size()-1);
+        }
+
+   
+}
+
+// 1 2 3
+
+// []
+// [1]
+// [2]
+// [1 2]
+// [3]
+// [1 3]
+// [2 3]
+// [1 2 3]
