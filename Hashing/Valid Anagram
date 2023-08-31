@@ -1,0 +1,46 @@
+class Solution {
+    public boolean isAnagram(String s, String t) {
+        
+        int n=s.length();
+        int m=t.length();
+
+        if(n!=m)
+        return false;
+       
+    //    int arr[]=new int[26];
+    //    for(int i=0;i<n;i++){
+    //        arr[s.charAt(i)-'a']++;
+    //        arr[t.charAt(i)-'a']--;
+          
+    //    }
+
+    //    for(int i=0;i<26;i++){
+    //        if(arr[i]!=0)
+    //        return false;
+    //    }
+    //    return true;
+
+
+    HashMap<Character,Integer>map=new HashMap<>();
+   
+    for(int i=0;i<n;i++){
+
+        char curr=s.charAt(i);
+        char currT=t.charAt(i);
+       
+         map.put(curr,map.getOrDefault(curr,0)+1);
+         map.put(currT,map.getOrDefault(currT,0)-1);
+        
+       
+    }
+
+    for(int i=0;i<n;i++){
+        if(map.get(s.charAt(i))!=0)
+        return false;
+    }
+    return true;
+
+       
+
+    }
+}
