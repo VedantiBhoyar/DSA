@@ -1,0 +1,22 @@
+class Solution {
+    public boolean isHappy(int n) {
+        Set<Integer>set=new HashSet<>();
+        int k=n;
+        while(k!=1){
+            k=sumOfDigits(k);
+            if(!set.contains(k))
+             set.add(k);
+            else
+             return false;       
+        }
+        return true;
+    }
+     public int sumOfDigits(int n){
+        int sum=0;
+        while(n>0){
+            sum+=(n%10)*(n%10);
+            n/=10;
+        }
+        return sum;
+    }
+}
