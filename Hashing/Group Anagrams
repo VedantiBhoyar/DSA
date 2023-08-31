@@ -1,0 +1,40 @@
+class Solution {
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+      HashMap<String,List<String>>map=new HashMap<>();
+      int n=strs.length;
+
+       for(int i=0;i<n;i++){
+
+          String current=strs[i];
+          char arr[]=current.toCharArray();
+          Arrays.sort(arr);
+
+          String sorted=new String(arr);
+
+          if(map.containsKey(sorted)){
+            map.get(sorted).add(current);
+          }
+          else{
+           map.put(sorted,new ArrayList<>());
+           map.get(sorted).add(current);
+          }
+      }
+      return new ArrayList<>(map.values());
+
+    }
+}
+
+// ["eat","tea","tan","ate","nat","bat"]
+// int n=6
+
+// eat      sorted=aet
+   
+//     HashMap:
+// String  List<String>list
+// aet      eat tea ate
+// ant      tan  nat
+// bat      bat
+
+
+
