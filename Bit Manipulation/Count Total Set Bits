@@ -1,0 +1,13 @@
+public class Solution {
+    public int solve(int A) {
+        int count=0;
+        int mod=1000000007;
+        for(int i=1;i<=A;i++){
+            for(int j=0;j<32;j++){
+                if( (i & (1<<j) ) !=0)
+                 count=(count%mod+1%mod)%mod;
+            }
+        }
+        return count;
+    }
+}
