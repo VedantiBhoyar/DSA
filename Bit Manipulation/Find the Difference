@@ -1,0 +1,15 @@
+class Solution {
+    public char findTheDifference(String s, String t) {
+     int n=s.length();
+     int i=0;
+     int ans=0;
+     while(i<n){
+         ans^=s.charAt(i);
+         ans^=t.charAt(i);
+         i++;
+     }
+     ans^=t.charAt(i);
+     return (char)ans;
+    }
+}
+
