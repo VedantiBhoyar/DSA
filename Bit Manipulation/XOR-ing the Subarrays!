@@ -1,0 +1,14 @@
+public class Solution {
+    public int solve(int[] A) {
+        if(A.length%2==0)
+         return 0; 
+                     
+       int x=A[0];    
+   
+    for(int i=2;i<A.length;i+=2)
+    {
+        x=x^A[i];
+    }
+    return x;
+    }
+}
